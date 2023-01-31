@@ -1,5 +1,5 @@
 """
-    Esse arquivo se refere a Aula12(Classes), com o adicional de polimorfismos e herança de classe
+    Esse arquivo se refere a Aula12(Classes), com o adicional de polimorfismos e herança de classe.
 """
 
 class Agencia:
@@ -12,7 +12,7 @@ class Agencia:
         """
         self.telefone = telefone
         self.cnpj = cnpj
-        self.numero = numero
+        self.agencia = numero
         self.clientes = []
         self.caixa = 0
         self.emprestimos = []
@@ -37,6 +37,24 @@ class Agencia:
 
 
 
+
+class AgenciaVirtual(Agencia):
+    #Construtor de classe da Agencia Virtual
+    def __init__(self, site: str):
+        self.site = site
+        #Chamando o __init__ da classe principal(Agencia)
+        super().__init__("telefone", "12.222.222/0001-33", 1000 )
+        
+
+
+class AgenciaComum(Agencia):
+    pass
+
+class AgenciaPremium(Agencia):
+    pass
+
+
+
 minha_agencia = Agencia("(31)91111-2222", "11-111-111/0001-22", 100)
 minha_agencia.caixa = 10000000
 
@@ -46,3 +64,8 @@ print(minha_agencia.emprestimos)
 
 minha_agencia.adicionar_cliente("José Gabriel", "111.222.333-44", 10000)
 print(minha_agencia.clientes)
+
+agencia_virtual = AgenciaVirtual("www.minhaagencia.com.br")
+print(agencia_virtual.site)
+print(agencia_virtual.agencia)
+print(agencia_virtual.cnpj)
